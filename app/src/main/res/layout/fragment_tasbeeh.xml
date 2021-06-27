@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backGround"
+        tools:context=".TasbeehFragment">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_tasbeeh_add"
+            style="@style/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/btn_custom_style"
+            android:text="أضف واحدًا آخر"
+            app:layout_constraintEnd_toEndOf="@id/btn_tasbeeh_refreshAll"
+            app:layout_constraintStart_toEndOf="@id/btn_tasbeeh_startOver"
+            app:layout_constraintTop_toTopOf="@id/btn_tasbeeh_startOver" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_tasbeeh_refreshAll"
+            style="@style/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="190dp"
+            android:background="@drawable/btn_custom_style"
+            android:text="آبدآ الجميع من جديد"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_tasbeeh_startOver"
+            style="@style/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/btn_custom_style"
+            android:text="إبدأ من جديد"
+            app:layout_constraintEnd_toStartOf="@id/btn_tasbeeh_add"
+            app:layout_constraintStart_toStartOf="@id/btn_tasbeeh_refreshAll"
+            app:layout_constraintTop_toBottomOf="@id/spin_tasbeeh_zeker" />
+
+        <TextView
+            android:id="@+id/tv_tasbees_counterView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="العدد = 0"
+            android:textSize="50dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="@id/btn_tasbeeh_add"
+            app:layout_constraintStart_toStartOf="@id/btn_tasbeeh_startOver"
+            app:layout_constraintTop_toBottomOf="@id/btn_tasbeeh_refreshAll" />
+
+        <Spinner
+            android:id="@+id/spin_tasbeeh_zeker"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toStartOf="@id/tv_tasbees_chooseOne"
+            app:layout_constraintStart_toStartOf="@id/btn_tasbeeh_startOver"
+            app:layout_constraintTop_toBottomOf="@id/tv_tasbees_counterView" />
+
+        <TextView
+            android:id="@+id/tv_tasbees_chooseOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اختر واحدًا"
+            android:textSize="20dp"
+            style="bold"
+            app:layout_constraintEnd_toEndOf="@id/btn_tasbeeh_add"
+            app:layout_constraintStart_toEndOf="@id/spin_tasbeeh_zeker"
+            app:layout_constraintTop_toTopOf="@id/spin_tasbeeh_zeker" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
