@@ -45,8 +45,8 @@ public class SuraActivity extends AppCompatActivity {
         try {
             InputStream stream = getAssets().open(inFile);
 
-            int size = stream.available();
-            byte[] buffer = new byte[size];
+//            int size = stream.available();
+//            byte[] buffer = new byte[size];
             BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
             while(reader.ready()) {
                 String line = reader.readLine();
