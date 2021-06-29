@@ -1,7 +1,9 @@
 package com.alamat.besmellah;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -15,10 +17,21 @@ import java.util.List;
 public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecyclerViewAdapter.ViewHolder> {
 
     List<QuranModel> quranModels;
+    int itemView;
+    OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener= onItemClickListener;
+    }
+
+
 
     public QuranRecyclerViewAdapter(List<QuranModel> quranModels) {
         this.quranModels = quranModels;
+        this.itemView = itemView;
     }
+
+
 
     @NonNull
     @Override
@@ -31,6 +44,15 @@ public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecycler
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         QuranModel quranModel = quranModels.get(position);
         holder.quranItemBinding.tvQuranQuranText.setText(quranModel.quranText);
+
+        if (onItemClickListener!=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClick(position,quranModel);
+                }
+            });
+        }
     }
 
     @Override
@@ -54,4 +76,8 @@ public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecycler
         }
     }
 
+    public interface OnItemClickListener{
+        void onItemClick(int pos , QuranModel quranModel);
+
+    }
 }

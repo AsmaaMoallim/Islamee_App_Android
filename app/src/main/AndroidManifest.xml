@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Besmellah">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".SuraActivity"></activity>
+        <activity android:name=".suraActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

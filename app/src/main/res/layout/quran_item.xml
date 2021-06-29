@@ -12,17 +12,17 @@
 
         <TextView
             android:id="@+id/tv_quran_quranText"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:background="@mipmap/sora_frame1"
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/sora_frame3"
             android:text="اسم السورة"
             android:textSize="20dp"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

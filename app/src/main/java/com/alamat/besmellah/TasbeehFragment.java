@@ -21,7 +21,7 @@ public class TasbeehFragment extends Fragment implements AdapterView.OnItemSelec
 
     private FragmentTasbeehBinding binding;
     View view;
-    int counter = 0;
+    int counter;
     //    int[] counterArr ;
     ArrayList<Integer> counterArr = new ArrayList<Integer>();
     int index;
@@ -49,6 +49,7 @@ public class TasbeehFragment extends Fragment implements AdapterView.OnItemSelec
 //                    counter += 1;
                     counterArr.set(index, counter++);
                     setTextsvalues(index);
+//                    countingTotal();
                 } catch (IndexOutOfBoundsException e) {
                     return;
                 }
@@ -60,8 +61,10 @@ public class TasbeehFragment extends Fragment implements AdapterView.OnItemSelec
             @Override
             public void onClick(View v) {
                 counter = 0;
-                counterArr.add(index, 0);
-                setTextsvalues(index);            }
+                counterArr.set(index, 0);
+                setTextsvalues(index);
+//                countingTotal();
+            }
         });
 
         binding.btnTasbeehRefreshAll.setOnClickListener(new View.OnClickListener() {
@@ -87,24 +90,25 @@ public class TasbeehFragment extends Fragment implements AdapterView.OnItemSelec
     String[] spinnerValues = {"سبحان الله", "الحمد لله", "استغفر الله", "لا إله إلا الله", "سبحان الله العظيم"};
 
 
-    public void setTextsvalues(int index){
-            switch (index) {
-                case 0:
-                    binding.tvTasbeesCounterView1.setText("تعداد سبحان الله = " + counterArr.get(index));
-                    break;
-                case 1:
-                    binding.tvTasbeesCounterView2.setText("تعداد الحمد لله = " + counterArr.get(index));
-                    break;
-                case 2:
-                    binding.tvTasbeesCounterView3.setText("تعداد استغفر الله = " + counterArr.get(index));
-                    break;
-                case 3:
-                    binding.tvTasbeesCounterView4.setText("تعداد لا إله إلا الله = " + counterArr.get(index));
-                    break;
-                case 4:
-                    binding.tvTasbeesCounterView5.setText("تعداد سبحان الله العظيم = " + counterArr.get(index));
-                    break;
-            }
+    public void setTextsvalues(int index) {
+        switch (index) {
+            case 0:
+                binding.tvTasbeesCounterView1.setText("تعداد سبحان الله = " + counterArr.get(index));
+                break;
+            case 1:
+                binding.tvTasbeesCounterView2.setText("تعداد الحمد لله = " + counterArr.get(index));
+                break;
+            case 2:
+                binding.tvTasbeesCounterView3.setText("تعداد استغفر الله = " + counterArr.get(index));
+                break;
+            case 3:
+                binding.tvTasbeesCounterView4.setText("تعداد لا إله إلا الله = " + counterArr.get(index));
+                break;
+            case 4:
+                binding.tvTasbeesCounterView5.setText("تعداد سبحان الله العظيم = " + counterArr.get(index));
+                break;
+        }
+
         int totalCount=0;
         for (int i = 0; i < spinnerValues.length; i++) {
             totalCount+=(counterArr.get(i));
@@ -112,12 +116,21 @@ public class TasbeehFragment extends Fragment implements AdapterView.OnItemSelec
         binding.tvTasbeesTotalView.setText("المجموع = " +totalCount);
     }
 
+//
+//    public void countingTotal() {
+//        int totalCount = 0;
+//        for (int i = 0; i < spinnerValues.length; i++) {
+//                totalCount += (counterArr.get(i));
+//            }
+//        binding.tvTasbeesTotalView.setText("المجموع = " + totalCount);
+//    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         index = position;
-        counter = counterArr.get(index);
         setTextsvalues(index);
+        counter = counterArr.get(index);
+
 //        Toast.makeText(getContext(), "Selected User: " + spinnerValues[position] + index, Toast.LENGTH_SHORT).show();
     }
 
