@@ -41,7 +41,7 @@ public class SuraActivity extends AppCompatActivity {
 
     }
     public String LoadData(String inFile) {
-        String tContents = "";
+        String text = "";
         try {
             InputStream stream = getAssets().open(inFile);
 
@@ -51,7 +51,7 @@ public class SuraActivity extends AppCompatActivity {
             while(reader.ready()) {
                 String line = reader.readLine();
 //                System.out.println(line);
-                tContents += line + "\n----------------------------------------------------------\n";
+                text += line + "\n----------------------------------------------------------\n";
             }
 //            stream.read(buffer);
             stream.close();
@@ -59,6 +59,6 @@ public class SuraActivity extends AppCompatActivity {
         } catch (IOException e) {
             // Handle exceptions here
         }
-        return tContents;
+        return text;
     }
 }
