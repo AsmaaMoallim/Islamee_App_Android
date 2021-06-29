@@ -14,7 +14,7 @@
             android:id="@+id/tv_quran_quranText"
             android:layout_width="300dp"
             android:layout_height="70dp"
-            android:background="@mipmap/frame1"
+            android:background="@mipmap/sora_frame1"
             android:text="اسم السورة"
             android:textSize="20dp"
             android:gravity="center"
