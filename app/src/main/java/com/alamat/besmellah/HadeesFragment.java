@@ -60,13 +60,11 @@ public class HadeesFragment extends Fragment {
     }
 
 
-
-    public void createHadeesList(){
-//        hadeesModelList = new ArrayList<>();
+    //        hadeesModelList = new ArrayList<>();
 //        for (int i= 0;i<listOfAhadethNames.length;i++){
 //            hadeesModelList.add(new HadeesModel( listOfAhadethNames[i] ));
 //        }
-
+    public void createHadeesList(){
 
         Cursor cursor=new DbManager(getContext()).readdata();
         hadeesModelList=new ArrayList<>();
