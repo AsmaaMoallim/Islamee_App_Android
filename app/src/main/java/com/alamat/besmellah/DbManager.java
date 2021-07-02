@@ -61,6 +61,13 @@ public class DbManager extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public void deleteonerecord(int index){
+            SQLiteDatabase db = this.getWritableDatabase();
+            String qry = "DELETE FROM tbl_hadees WHERE id='"+ index +"';";
+            db.execSQL(qry);
+        }
+    }
+
 
 
 //
@@ -80,4 +87,4 @@ public class DbManager extends SQLiteOpenHelper {
 ////        db.execSQL(qry);
 //        return cursor;
 //    }
-}
+

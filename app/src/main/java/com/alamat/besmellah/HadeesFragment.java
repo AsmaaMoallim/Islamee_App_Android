@@ -48,6 +48,7 @@ public class HadeesFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), HadessContentActivity.class);
                 String hadeescontent = hadeesModel.content;
                 intent.putExtra("hadeescontent", hadeescontent);
+                intent.putExtra("id", pos);
                 startActivity(intent);
 //                Toast.makeText(getActivity(), "onItemClick" + hadeesModel, Toast.LENGTH_SHORT).show();
 
