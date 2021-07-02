@@ -1,5 +1,7 @@
 package com.alamat.besmellah;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.alamat.besmellah.databinding.FragmentHadeesBinding;
 
@@ -39,20 +42,40 @@ public class HadeesFragment extends Fragment {
         binding.rvHadeesRecyclerView.setLayoutManager(layoutManager);
 
 
+        hadeesAdapter.setOnItemClickListener(new HadeesRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int pos, HadeesModel hadeesModel) {
+                Intent intent = new Intent(getActivity(), HadessContentActivity.class);
+                String hadeescontent = hadeesModel.content;
+                intent.putExtra("hadeescontent", hadeescontent);
+                startActivity(intent);
+//                Toast.makeText(getActivity(), "onItemClick" + hadeesModel, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         view = binding.getRoot();
 
         return view;
     }
-    public static String[] listOfAhadethNames = {"الحديث الأول","الحديث الثاني","الحديث الـثـالـث","الحديث الـرابع","الحديث الخامس","الحديث السادس","الحديث السابع","الحديث الثامن","الحديث التاسع","الحديث العاشر",
-            "الحديث الحادي عشر","الحديث الثانى عشر","الحديث الثالث عشر","الحد يث الرابع عشر","الحديث الخامس عشر","الحديث السادس عشر","الحديث السابع عشر","الحد يث الثامن عشر","الحد يث التاسع عشر","الحديث العشرون",
-            "الحديث الحادي والعشرون","الحديث الثانى والعشرون","الحديث الثالث والعشرون","الحديث الرابع والعشرون","الحديث الخامس والعشرون","الحديث السادس والعشرون","الحديث السابع والعشرون","الحديث الثامن والعشرون","الحديث التاسع والعشرون","الحديث الثلاثون",
-            "الحديث الحادي والثلاثون","الحديث الثانى والثلاثون","الحديث الثالث والثلاثون","الحديث الرابع والثلاثون","الحديث الخامس والثلاثون","الحديث السادس والثلاثون","الحديث السابع والثلاثون","الحديث الثامن والثلاثون","الحديث التاسع والثلاثون","الحديث الأربعون",
-            "الحديث الحادي والأربعون","الحديث الثانى والأربعون","الحديث الثالث والأربعون","الحديث الرابع والأربعون","الحديث الخامس والأربعون","الحديث السادس والأربعون","الحديث السابع والأربعون","الحديث الثامن والأربعون","الحديث التاسع والأربعون","الحديث الخمسون",
-    };
+
+
+
     public void createHadeesList(){
-        hadeesModelList = new ArrayList<>();
-        for (int i= 0;i<listOfAhadethNames.length;i++){
-            hadeesModelList.add(new HadeesModel( listOfAhadethNames[i] ));
+//        hadeesModelList = new ArrayList<>();
+//        for (int i= 0;i<listOfAhadethNames.length;i++){
+//            hadeesModelList.add(new HadeesModel( listOfAhadethNames[i] ));
+//        }
+
+
+        Cursor cursor=new DbManager(getContext()).readdata();
+        hadeesModelList=new ArrayList<>();
+
+        while(cursor.moveToNext())
+        {
+            HadeesModel obj=new HadeesModel(cursor.getString(1),cursor.getString(2));
+            hadeesModelList.add(obj);
         }
     }
+
 }

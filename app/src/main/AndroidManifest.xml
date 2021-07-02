@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Besmellah">
-        <activity android:name=".SuraActivity"></activity>
+        <activity android:name=".HadessContentActivity"></activity>
+        <activity android:name=".SuraActivity" />
         <activity android:name=".suraActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity">

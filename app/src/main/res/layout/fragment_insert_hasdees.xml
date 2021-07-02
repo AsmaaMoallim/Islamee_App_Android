@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,13 +10,93 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/backGround"
         tools:context=".InsertHasdeesFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_insertHadees_deleteAllData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="120dp"
+            android:background="@drawable/btn_custom_style"
+            android:gravity="center"
+            android:paddingHorizontal="50dp"
+            android:text="حذف كل الاحاديث"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@id/et_insertHadees_hadeesContent"
+            app:layout_constraintStart_toStartOf="@id/et_insertHadees_hadeesContent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_insertHadees_hadeesTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/purple_500"
+            android:hint="ادخل اسم الحديث"
+            android:textAlignment="center"
+            android:textDirection="rtl"
+            android:textSize="20dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_insertHadees_deleteAllData" />
+
+
+        <EditText
+            android:id="@+id/et_insertHadees_hadeesContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/purple_500"
+            android:hint="ادخل نص الحديث"
+            android:inputType="textMultiLine"
+            android:textAlignment="center"
+            android:textDirection="rtl"
+            android:textSize="20dp"
+            app:layout_constraintTop_toBottomOf="@id/et_insertHadees_hadeesTitle" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_insertHadees_insertBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="120dp"
+            android:background="@drawable/btn_custom_style"
+            android:gravity="center"
+            android:paddingHorizontal="50dp"
+            android:text="احفظ الحديث"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@id/et_insertHadees_hadeesContent"
+            app:layout_constraintStart_toStartOf="@id/et_insertHadees_hadeesContent"
+            app:layout_constraintTop_toBottomOf="@id/et_insertHadees_hadeesContent" />
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_insertHadees_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="120dp"
+            android:background="@drawable/btn_custom_style"
+            android:gravity="center"
+            android:paddingHorizontal="50dp"
+            android:text="استعادة احاديث التطبيق"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@id/et_insertHadees_hadeesContent"
+            app:layout_constraintStart_toStartOf="@id/et_insertHadees_hadeesContent"
+            app:layout_constraintTop_toBottomOf="@id/btn_insertHadees_insertBtn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

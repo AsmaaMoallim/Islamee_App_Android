@@ -1,17 +1,28 @@
 package com.alamat.besmellah;
 
 public class HadeesModel {
-    String hadeesText;
+    String title;
+    String content;
 
-    public HadeesModel(String hadeesText) {
-        this.hadeesText = hadeesText;
+
+    public HadeesModel(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
-    public String getHadeesText() {
-        return hadeesText;
+    public String getTitle() {
+        return title;
     }
 
-    public void setHadeesText(String hadeesText) {
-        this.hadeesText = hadeesText;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

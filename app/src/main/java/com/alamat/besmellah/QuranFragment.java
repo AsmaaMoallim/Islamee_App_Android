@@ -23,6 +23,7 @@ public class QuranFragment extends Fragment {
 
     private FragmentQuranBinding binding;
     View view;
+
     QuranRecyclerViewAdapter quranAdapter;
     RecyclerView.LayoutManager layoutManager;
     List<QuranModel> quranModelList;

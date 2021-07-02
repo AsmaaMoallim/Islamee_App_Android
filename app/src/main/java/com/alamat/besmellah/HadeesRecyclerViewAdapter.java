@@ -3,6 +3,7 @@ package com.alamat.besmellah;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -15,9 +16,16 @@ import java.util.List;
 public class HadeesRecyclerViewAdapter extends RecyclerView.Adapter<HadeesRecyclerViewAdapter.ViewHolder> {
 
     List<HadeesModel> hadeesModels;
+    int itemView;
+    OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     public HadeesRecyclerViewAdapter(List<HadeesModel> hadeesModels) {
         this.hadeesModels = hadeesModels;
+        this.itemView = itemView;
     }
 
     @NonNull
@@ -30,7 +38,16 @@ public class HadeesRecyclerViewAdapter extends RecyclerView.Adapter<HadeesRecycl
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HadeesModel hadeesModel = hadeesModels.get(position);
-        holder.hadeesItemBinding.tvHadeesHadeesText.setText(hadeesModel.hadeesText);
+        holder.hadeesItemBinding.tvHadeesHadeesText.setText(hadeesModel.title);
+
+        if (onItemClickListener != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClick(position,hadeesModel);
+                }
+            });
+        }
     }
 
     @Override
@@ -54,4 +71,7 @@ public class HadeesRecyclerViewAdapter extends RecyclerView.Adapter<HadeesRecycl
         }
     }
 
+    public interface OnItemClickListener{
+        void onItemClick(int pos , HadeesModel hadeesModel);
+    }
 }
