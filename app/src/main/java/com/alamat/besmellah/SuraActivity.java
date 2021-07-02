@@ -1,10 +1,13 @@
 package com.alamat.besmellah;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.MenuItem;
 
 import com.alamat.besmellah.databinding.ActivitySuraBinding;
 
@@ -15,12 +18,26 @@ import java.io.InputStreamReader;
 
 public class SuraActivity extends AppCompatActivity {
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private ActivitySuraBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sura);
 //        binding = ActivitySuraBinding.inflate(getLayoutInflater());
 //        setContentView(R.layout.activity_sura);
@@ -40,6 +57,8 @@ public class SuraActivity extends AppCompatActivity {
         binding.tvSuraSuraContent.setMovementMethod(new ScrollingMovementMethod());
 
     }
+
+
     public String LoadData(String inFile) {
         String text = "";
         try {
@@ -48,10 +67,12 @@ public class SuraActivity extends AppCompatActivity {
 //            int size = stream.available();
 //            byte[] buffer = new byte[size];
             BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+            int num = 0;
+
             while(reader.ready()) {
                 String line = reader.readLine();
 //                System.out.println(line);
-                text += line + "\n----------------------------------------------------------\n";
+                text += line + "\n------------------------ ( " + ++num + " ) ------------------------\n";
             }
 //            stream.read(buffer);
             stream.close();

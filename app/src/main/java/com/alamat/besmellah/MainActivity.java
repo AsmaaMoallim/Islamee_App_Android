@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity  {
                     fragment = new QuranFragment();
                     break;
                 case R.id.it_menu_hadees:
-                    fragment = new HadeesFragment();
+                    fragment = new MainHadeesFragment();
                     break;
                 case R.id.it_menu_tasbeeh:
                     fragment = new TasbeehFragment();

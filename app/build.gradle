@@ -47,5 +47,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
     implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
 
+    //Optional: see how to use the utility.
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
 }
