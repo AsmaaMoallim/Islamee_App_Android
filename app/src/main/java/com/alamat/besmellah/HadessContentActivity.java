@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.alamat.besmellah.databinding.ActivityHadessContentBinding;
 
@@ -36,15 +37,20 @@ public class HadessContentActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         binding.tvHadeesContentHadeescontent.setText(extras.getString("hadeescontent"));
 
-//
-//        binding.btnHadeesContentDeletonehadees.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int id = getIntent().getExtras().getInt("id");
-//                new DbManager(getApplicationContext()).deleteonerecord(id);
-//
-//            }
-//        });
+
+        binding.btnHadeesContentDeletonehadees.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = getIntent().getExtras().getInt("id");
+                String res = new DbManager(getBaseContext()).deleteonerecord(++id);
+
+                HadeesFragment.hadeesModelList.remove(--id);
+                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+
+                Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 
 }

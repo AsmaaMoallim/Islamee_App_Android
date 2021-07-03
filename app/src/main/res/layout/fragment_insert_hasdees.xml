@@ -89,7 +89,7 @@
             android:layout_marginBottom="120dp"
             android:background="@drawable/btn_custom_style"
             android:gravity="center"
-            android:paddingHorizontal="60dp"
+            android:paddingHorizontal="30dp"
             android:text="استعادة احاديث التطبيق"
             android:textAlignment="center"
             android:textColor="@color/white"

@@ -38,7 +38,6 @@ public class DbManager extends SQLiteOpenHelper {
         cv.put("title", title);
         cv.put("content", content);
         float res = dp.insert("tbl_hadees", null, cv);
-
         if (res == -1)
             return "Failed";
         else
@@ -46,28 +45,45 @@ public class DbManager extends SQLiteOpenHelper {
 
     }
 
-    public void emptydb(){
+    public String emptydb() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String qry = "delete from tbl_hadees";
+
+        /// drop it to restart the id from 1
+        String qry = "DROP TABLE IF EXISTS tbl_hadees";
         db.execSQL(qry);
+        onCreate(db);
+
+        //////
+//        String qry = "delete from tbl_hadees";
+//        db.execSQL(qry);
+        float res = db.delete("tbl_hadees", null, null);
+        if (res == -1)
+            return "Failed";
+        else
+            return "All Records Are Successfully Deleted";
     }
 
 
     public Cursor readdata() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String qry = "select * from tbl_hadees order by id desc";
+        String qry = "select * from tbl_hadees order by id asc";
         Cursor cursor = db.rawQuery(qry, null);
 //        db.execSQL(qry);
         return cursor;
     }
 
-    public void deleteonerecord(int index){
-            SQLiteDatabase db = this.getWritableDatabase();
-            String qry = "DELETE FROM tbl_hadees WHERE id='"+ index +"';";
-            db.execSQL(qry);
-        }
-    }
+    public String deleteonerecord(int index) {
+        SQLiteDatabase db = this.getWritableDatabase();
+//        String qry = "DELETE FROM tbl_hadees WHERE id='" + index + "';";
+//        db.execSQL(qry);
 
+        float res = db.delete("tbl_hadees", "id" + "=" + index, null);
+        if (res == -1)
+            return "Failed";
+        else
+            return "Record Is Successfully Deleted" + index;
+    }
+}
 
 
 //

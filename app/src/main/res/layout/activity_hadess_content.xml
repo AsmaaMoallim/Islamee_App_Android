@@ -57,21 +57,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/btn_hadeesContent_deletonehadees"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="48dp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            android:background="@drawable/btn_custom_style"-->
-<!--            android:gravity="center"-->
-<!--            android:paddingHorizontal="20sp"-->
-<!--            android:text="احذف هذا الحديث"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="15sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_hadeesContent_deletonehadees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/btn_custom_style"
+            android:gravity="center"
+            android:paddingHorizontal="20sp"
+            android:text="احذف هذا الحديث"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

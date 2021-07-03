@@ -54,6 +54,7 @@ public class MainHadeesFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 binding.viewpager.getAdapter().notifyDataSetChanged();
+
             }
 
             @Override

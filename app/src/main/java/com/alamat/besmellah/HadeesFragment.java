@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -25,9 +26,9 @@ public class HadeesFragment extends Fragment {
     private FragmentHadeesBinding binding;
     View view;
 
-    HadeesRecyclerViewAdapter hadeesAdapter;
+    static HadeesRecyclerViewAdapter hadeesAdapter;
     RecyclerView.LayoutManager layoutManager;
-    List<HadeesModel> hadeesModelList;
+    static List<HadeesModel> hadeesModelList;
 
 
     @Override
@@ -77,4 +78,23 @@ public class HadeesFragment extends Fragment {
         }
     }
 
+//    @Override
+//    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+//        super.onViewStateRestored(savedInstanceState);
+//        hadeesAdapter.notifyDataSetChanged();
+//
+//    }
+    //    @Override
+//    public void onStart() {
+//        super.onStart();
+//        hadeesAdapter.notifyDataSetChanged();
+//
+//    }
+
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        hadeesAdapter.notifyDataSetChanged();
+//    }
 }

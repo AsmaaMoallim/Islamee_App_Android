@@ -38,18 +38,19 @@ public class InsertHasdeesFragment extends Fragment {
         view = binding.getRoot();
 
 
-
         binding.btnInsertHadeesInsertBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 processinsert(binding.etInsertHadeesHadeesTitle.getText().toString(), binding.etInsertHadeesHadeesContent.getText().toString());
+
             }
         });
 
         binding.btnInsertHadeesDeleteAllData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DbManager(getContext()).emptydb();
+                String res = new DbManager(getContext()).emptydb();
+                Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -57,7 +58,9 @@ public class InsertHasdeesFragment extends Fragment {
         binding.btnInsertHadeesReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 defualtinsertion();
+
             }
         });
 
@@ -76,6 +79,7 @@ public class InsertHasdeesFragment extends Fragment {
         binding.etInsertHadeesHadeesContent.setText("");
 
         Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
+
     }
 
     public static String[] listOfAhadethNames = {"الحديث الأول", "الحديث الثاني", "الحديث الـثـالـث", "الحديث الـرابع", "الحديث الخامس", "الحديث السادس", "الحديث السابع", "الحديث الثامن", "الحديث التاسع", "الحديث العاشر",
@@ -87,10 +91,12 @@ public class InsertHasdeesFragment extends Fragment {
 
     private void defualtinsertion() {
         newHadeesFile = readLine("ahadeth.txt");
+        String res = "";
         for (int i = 0; i < newHadeesFile.size(); i++) {
-                System.out.println(newHadeesFile.get(i) + "hi");
-                new DbManager(getContext()).addrecord(listOfAhadethNames[i],newHadeesFile.get(i) );
+            System.out.println(newHadeesFile.get(i) + "hi");
+            res = new DbManager(getContext()).addrecord(listOfAhadethNames[i], newHadeesFile.get(i));
         }
+        Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
     }
 
     public List<String> readLine(String path) {
@@ -113,22 +119,23 @@ public class InsertHasdeesFragment extends Fragment {
 //            } while ((line = reader.readLine()) != null);
 
             String text = "";
-            while (reader.ready()){
+            while (reader.ready()) {
                 String line = reader.readLine();
-                if (line.contains("#")){
+                if (line.contains("#")) {
                     mLines.add(text);
                     text = "";
-                }
-                else {
+                } else {
                     text = text + line;
                 }
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
 //            e.printStackTrace();
         }
 
         return mLines;
     }
+
+}
     //
 //
 //    public ArrayList<String> reorderFile(ArrayList<String> h) {
@@ -158,9 +165,9 @@ public class InsertHasdeesFragment extends Fragment {
 //        }
 //
 //        return h;
-    }
 
-    //
+
+//
 //    private String hadeescontent(int i) {
 //        ArrayList<String> v = reorderFile(newHadeesFile);
 //
