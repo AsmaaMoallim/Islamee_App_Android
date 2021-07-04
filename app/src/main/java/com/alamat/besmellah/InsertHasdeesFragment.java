@@ -41,7 +41,8 @@ public class InsertHasdeesFragment extends Fragment {
         binding.btnInsertHadeesInsertBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                processinsert(binding.etInsertHadeesHadeesTitle.getText().toString(), binding.etInsertHadeesHadeesContent.getText().toString());
+                int newid = new DbManager(getContext()).getLastInsertedId();
+                processinsert(++newid,binding.etInsertHadeesHadeesTitle.getText().toString(), binding.etInsertHadeesHadeesContent.getText().toString());
 
             }
         });
@@ -70,8 +71,8 @@ public class InsertHasdeesFragment extends Fragment {
 
     }
 
-    private void processinsert(String title, String content) {
-        String res = new DbManager(getContext()).addrecord(title, content);
+    private void processinsert(int id, String title, String content) {
+        String res = new DbManager(getContext()).addrecord(id, title, content);
 
 //        String res = database.addrecord(title, content);
 
@@ -93,8 +94,8 @@ public class InsertHasdeesFragment extends Fragment {
         newHadeesFile = readLine("ahadeth.txt");
         String res = "";
         for (int i = 0; i < newHadeesFile.size(); i++) {
-            System.out.println(newHadeesFile.get(i) + "hi");
-            res = new DbManager(getContext()).addrecord(listOfAhadethNames[i], newHadeesFile.get(i));
+//
+            res = new DbManager(getContext()).addrecord(++i,listOfAhadethNames[--i], newHadeesFile.get(i));
         }
         Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
     }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class HadessContentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int id = getIntent().getExtras().getInt("id");
                 String res = new DbManager(getBaseContext()).deleteonerecord(++id);
+                new DbManager(getBaseContext()).updateIDValues();
 
                 HadeesFragment.hadeesModelList.remove(--id);
                 HadeesFragment.hadeesAdapter.notifyDataSetChanged();
@@ -51,6 +53,8 @@ public class HadessContentActivity extends AppCompatActivity {
                 finish();
             }
         });
+        binding.tvHadeesContentHadeescontent.setMovementMethod(new ScrollingMovementMethod());
+
     }
 
 }

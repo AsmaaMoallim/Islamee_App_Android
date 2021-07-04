@@ -73,8 +73,11 @@ public class HadeesFragment extends Fragment {
 
         while(cursor.moveToNext())
         {
-            HadeesModel obj=new HadeesModel(cursor.getString(1),cursor.getString(2));
+            HadeesModel obj = null;
             hadeesModelList.add(obj);
+            int ind = hadeesModelList.indexOf(obj);
+            obj=new HadeesModel(ind,cursor.getString(1),cursor.getString(2));
+            hadeesModelList.set(ind,obj);
         }
     }
 

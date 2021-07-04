@@ -19,7 +19,7 @@ public class DbManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String qry = "CREATE TABLE tbl_hadees ( id integer primary key autoincrement, title text, content text)";
+        String qry = "CREATE TABLE tbl_hadees (id integer primary key AUTOINCREMENT, title text, content text)";
         db.execSQL(qry);
     }
 
@@ -31,10 +31,11 @@ public class DbManager extends SQLiteOpenHelper {
     }
 
 
-    public String addrecord(String title, String content) {
+    public String addrecord(int id, String title, String content) {
         SQLiteDatabase dp = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
+        cv.put("id", id);
         cv.put("title", title);
         cv.put("content", content);
         float res = dp.insert("tbl_hadees", null, cv);
@@ -82,6 +83,52 @@ public class DbManager extends SQLiteOpenHelper {
             return "Failed";
         else
             return "Record Is Successfully Deleted" + index;
+    }
+
+//    public int lastPresentID(){
+//        int lastID = 0;
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String qry = "SELECT coalesce(ID) FROM tbl_hadees WHERE ID = (SELECT MAX(ID)  FROM tbl_hadees);";
+//        lastID = (int)db.execSQL(qry);
+//        db.;
+//        return lastID;
+//    }
+
+    public int getLastInsertedId() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String qry = "SELECT id FROM tbl_hadees ORDER BY id DESC LIMIT 1";
+        Cursor c = db.rawQuery(qry, null);
+        int lastInsertedId = 0;
+        while (c.moveToNext()) {
+            lastInsertedId = c.getInt(0);
+        }
+        c.close();
+        return lastInsertedId;
+    }
+
+    public void updateIDValues() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int id = 0;
+
+        String qry = "CREATE TABLE tbl_hadees_new (id integer primary key AUTOINCREMENT, title text, content text);";
+
+        String qry1 = "INSERT INTO tbl_hadees_new(title, content)" +
+                " SELECT title, content" +
+                " FROM tbl_hadees ;";
+
+        String qry2= "DROP TABLE tbl_hadees;";
+
+        String qry3 = "ALTER TABLE tbl_hadees_new RENAME TO tbl_hadees;";
+
+//        db.update("tbl_hadees", "id");
+//        db.update( "tbl_hadees" + " SET " + "id" + " =  " + "id" + " + 1", null);
+//        String qry = " UPDATE tbl_hadees SET id = "+ id + "+1";
+//        String qry1 = "ALTER TABLE tbl_hadees Rename COLUMN id TO id;";
+        db.execSQL(qry);
+        db.execSQL(qry1);
+        db.execSQL(qry2);
+        db.execSQL(qry3);
+//        ALTER TABLE tableName AUTO_INCREMENT = 1;
     }
 }
 
