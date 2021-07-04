@@ -87,13 +87,13 @@ public class HadeesFragment extends Fragment {
 //        hadeesAdapter.notifyDataSetChanged();
 //
 //    }
-    //    @Override
+//        @Override
 //    public void onStart() {
 //        super.onStart();
 //        hadeesAdapter.notifyDataSetChanged();
 //
 //    }
-
+//
 //
 //    @Override
 //    public void onResume() {

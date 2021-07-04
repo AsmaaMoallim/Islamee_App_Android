@@ -43,6 +43,7 @@ public class InsertHasdeesFragment extends Fragment {
             public void onClick(View v) {
                 int newid = new DbManager(getContext()).getLastInsertedId();
                 processinsert(++newid,binding.etInsertHadeesHadeesTitle.getText().toString(), binding.etInsertHadeesHadeesContent.getText().toString());
+//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
             }
         });
@@ -52,6 +53,8 @@ public class InsertHasdeesFragment extends Fragment {
             public void onClick(View v) {
                 String res = new DbManager(getContext()).emptydb();
                 Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
+//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+
             }
         });
 
@@ -61,6 +64,8 @@ public class InsertHasdeesFragment extends Fragment {
             public void onClick(View v) {
 
                 defualtinsertion();
+//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+
 
             }
         });
@@ -136,7 +141,21 @@ public class InsertHasdeesFragment extends Fragment {
         return mLines;
     }
 
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+//
+//    }
 }
+
+
+
+
+
+
+
+
     //
 //
 //    public ArrayList<String> reorderFile(ArrayList<String> h) {

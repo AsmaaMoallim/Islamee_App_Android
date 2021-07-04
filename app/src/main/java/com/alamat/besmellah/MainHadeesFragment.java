@@ -48,17 +48,20 @@ public class MainHadeesFragment extends Fragment {
         binding.viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
             }
 
             @Override
             public void onPageSelected(int position) {
                 binding.viewpager.getAdapter().notifyDataSetChanged();
+//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
+//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
             }
         });
