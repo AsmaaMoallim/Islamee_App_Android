@@ -20,17 +20,15 @@ public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecycler
     int itemView;
     OnItemClickListener onItemClickListener;
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
-        this.onItemClickListener= onItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
-
 
 
     public QuranRecyclerViewAdapter(List<QuranModel> quranModels) {
         this.quranModels = quranModels;
         this.itemView = itemView;
     }
-
 
 
     @NonNull
@@ -45,11 +43,11 @@ public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecycler
         QuranModel quranModel = quranModels.get(position);
         holder.quranItemBinding.tvQuranQuranText.setText(quranModel.quranText);
 
-        if (onItemClickListener!=null){
+        if (onItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemClickListener.onItemClick(position,quranModel);
+                    onItemClickListener.onItemClick(position, quranModel);
                 }
             });
         }
@@ -76,8 +74,8 @@ public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecycler
         }
     }
 
-    public interface OnItemClickListener{
-        void onItemClick(int pos , QuranModel quranModel);
+    public interface OnItemClickListener {
+        void onItemClick(int pos, QuranModel quranModel);
 
     }
 }

@@ -51,4 +51,9 @@ dependencies {
 
     //Optional: see how to use the utility.
     implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
-    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'}
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+
+    implementation 'com.github.Gavras:MultiLineRadioGroup:v1.0.0.6'
+
+}
+

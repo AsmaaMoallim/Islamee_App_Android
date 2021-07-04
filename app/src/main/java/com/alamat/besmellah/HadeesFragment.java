@@ -94,7 +94,7 @@ public class HadeesFragment extends Fragment {
 //
 //    }
 //
-//
+
 //    @Override
 //    public void onResume() {
 //        super.onResume();

@@ -48,7 +48,6 @@ public class HadessContentActivity extends AppCompatActivity {
 
                 HadeesFragment.hadeesModelList.remove(--id);
                 HadeesFragment.hadeesAdapter.notifyDataSetChanged();
-
                 Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
                 finish();
             }
