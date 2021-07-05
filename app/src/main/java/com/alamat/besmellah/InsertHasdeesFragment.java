@@ -1,6 +1,7 @@
 package com.alamat.besmellah;
 
 import android.content.res.AssetManager;
+import android.media.AudioRecord;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -11,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.alamat.besmellah.databinding.FragmentHadeesBinding;
 import com.alamat.besmellah.databinding.FragmentInsertHasdeesBinding;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +35,7 @@ public class InsertHasdeesFragment extends Fragment {
     //    DbManager database;
     View view;
     List<String> newHadeesFile;
-
+//    FragmentStatePagerItemAdapter fragmentStatePagerItemAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,9 +49,8 @@ public class InsertHasdeesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int newid = new DbManager(getContext()).getLastInsertedId();
-                processinsert(++newid,binding.etInsertHadeesHadeesTitle.getText().toString(), binding.etInsertHadeesHadeesContent.getText().toString());
-//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
-
+                HadeesModel objToBeAdded = processinsert(++newid,binding.etInsertHadeesHadeesTitle.getText().toString(), binding.etInsertHadeesHadeesContent.getText().toString());
+                HadeesFragment.hadeesModelList.add(HadeesFragment.hadeesModelList.size(), objToBeAdded);
             }
         });
 
@@ -57,10 +60,25 @@ public class InsertHasdeesFragment extends Fragment {
                 String res = new DbManager(getContext()).emptydb();
                 Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
 
+                HadeesFragment.hadeesModelList.clear();
+                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+//                HadeesFragment.hadeesAdapter.notifyItemRemoved(1);
+//                fragmentStatePagerItemAdapter = new FragmentStatePagerItemAdapter(
+//                        getChildFragmentManager(), FragmentPagerItems.with(getActivity())
+//                        .add("الاحاديث", HadeesFragment.class)
+//                        .add("ادخل حديث جديد", InsertHasdeesFragment.class)
+//                        .create());
+////////
+//                fragmentStatePagerItemAdapter.getItemPosition(null);
+//                HadeesFragment.viewpager.setAdapter(fragmentStatePagerItemAdapter, );
+//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+//                HadeesFragment.viewpager.notifyAll();
 
-                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
-                HadeesFragment.hadeesAdapter.notifyItemRangeRemoved(0, HadeesFragment.hadeesModelList.size());
-                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+//                HadeesFragment.hadeesAdapter.notifyItemChanged(0);
+
+
+//                HadeesFragment.hadeesAdapter.notifyItemRangeRemoved(0, HadeesFragment.hadeesModelList.size());
+//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
 
             }
@@ -73,7 +91,7 @@ public class InsertHasdeesFragment extends Fragment {
 
                 defualtinsertion();
 //                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
-                HadeesFragment.hadeesAdapter.notifyItemRangeInserted(0, HadeesFragment.hadeesModelList.size());
+//                HadeesFragment.hadeesAdapter.notifyItemRangeInserted(0, HadeesFragment.hadeesModelList.size());
                 HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
             }
@@ -85,8 +103,9 @@ public class InsertHasdeesFragment extends Fragment {
 
     }
 
-    private void processinsert(int id, String title, String content) {
+    private HadeesModel processinsert(int id, String title, String content) {
         String res = new DbManager(getContext()).addrecord(id, title, content);
+        HadeesModel objToBeAdded = new HadeesModel(id, title, content);
 
 //        String res = database.addrecord(title, content);
 
@@ -94,7 +113,7 @@ public class InsertHasdeesFragment extends Fragment {
         binding.etInsertHadeesHadeesContent.setText("");
 
         Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
-
+        return objToBeAdded;
     }
 
     public static String[] listOfAhadethNames = {"الحديث الأول", "الحديث الثاني", "الحديث الـثـالـث", "الحديث الـرابع", "الحديث الخامس", "الحديث السادس", "الحديث السابع", "الحديث الثامن", "الحديث التاسع", "الحديث العاشر",
@@ -110,6 +129,9 @@ public class InsertHasdeesFragment extends Fragment {
         for (int i = 0; i < newHadeesFile.size(); i++) {
 //
             res = new DbManager(getContext()).addrecord(++i,listOfAhadethNames[--i], newHadeesFile.get(i));
+            HadeesModel objToBeAdded = new HadeesModel(++i, listOfAhadethNames[--i], newHadeesFile.get(i));
+            HadeesFragment.hadeesModelList.add(i, objToBeAdded);
+
         }
         Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
     }

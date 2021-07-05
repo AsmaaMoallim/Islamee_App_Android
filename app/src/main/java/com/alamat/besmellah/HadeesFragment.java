@@ -1,10 +1,10 @@
 package com.alamat.besmellah;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.alamat.besmellah.databinding.FragmentHadeesBinding;
 
@@ -36,7 +35,7 @@ public class HadeesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hadees, container, false);
-        createHadeesList();
+        createHadeesList(getContext());
         hadeesAdapter = new HadeesRecyclerViewAdapter(hadeesModelList);
         layoutManager = new GridLayoutManager(getActivity(), 2);
         binding.rvHadeesRecyclerView.setAdapter(hadeesAdapter);
@@ -66,18 +65,17 @@ public class HadeesFragment extends Fragment {
 //        for (int i= 0;i<listOfAhadethNames.length;i++){
 //            hadeesModelList.add(new HadeesModel( listOfAhadethNames[i] ));
 //        }
-    public void createHadeesList(){
+    public static void createHadeesList(Context context) {
 
-        Cursor cursor=new DbManager(getContext()).readdata();
-        hadeesModelList=new ArrayList<>();
+        Cursor cursor = new DbManager(context).readdata();
+        hadeesModelList = new ArrayList<>();
 
-        while(cursor.moveToNext())
-        {
+        while (cursor.moveToNext()) {
             HadeesModel obj = null;
             hadeesModelList.add(obj);
             int ind = hadeesModelList.indexOf(obj);
-            obj=new HadeesModel(ind,cursor.getString(1),cursor.getString(2));
-            hadeesModelList.set(ind,obj);
+            obj = new HadeesModel(ind, cursor.getString(1), cursor.getString(2));
+            hadeesModelList.set(ind, obj);
         }
     }
 
@@ -95,9 +93,4 @@ public class HadeesFragment extends Fragment {
 //    }
 //
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        hadeesAdapter.notifyDataSetChanged();
-//    }
 }

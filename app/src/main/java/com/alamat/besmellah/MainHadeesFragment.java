@@ -14,13 +14,14 @@ import com.alamat.besmellah.databinding.FragmentMainHadeesBinding;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
 
 public class MainHadeesFragment extends Fragment {
 
 
     private FragmentMainHadeesBinding binding;
-
+//    FragmentStatePagerItemAdapter fragmentStatePagerItemAdapter;
     FragmentPagerItemAdapter fragmentPagerItemAdapter;
     View view;
     @Override
@@ -33,6 +34,7 @@ public class MainHadeesFragment extends Fragment {
         return view;
     }
 
+
     public void initTabLayout(){
         fragmentPagerItemAdapter = new FragmentPagerItemAdapter(
                 getChildFragmentManager(), FragmentPagerItems.with(getActivity())
@@ -44,10 +46,10 @@ public class MainHadeesFragment extends Fragment {
         binding.viewpager.setAdapter(fragmentPagerItemAdapter);
         binding.viewpagertab.setViewPager(binding.viewpager);
 
-
         binding.viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                binding.viewpager.getAdapter().notifyDataSetChanged();
 //                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
             }
@@ -55,17 +57,24 @@ public class MainHadeesFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 binding.viewpager.getAdapter().notifyDataSetChanged();
-//                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
+//                binding.viewpager.getAdapter().notifyDataSetChanged();
 //                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 
             }
+
         });
     }
 
-
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        initTabLayout();
+//
+//    }
 }
