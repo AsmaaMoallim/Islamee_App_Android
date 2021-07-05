@@ -1,4 +1,4 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Hadees;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alamat.besmellah.DbManager;
+import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.FragmentHadeesBinding;
 
 import java.util.ArrayList;

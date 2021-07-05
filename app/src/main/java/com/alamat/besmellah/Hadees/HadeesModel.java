@@ -1,4 +1,4 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Hadees;
 
 public class HadeesModel {
     int id;

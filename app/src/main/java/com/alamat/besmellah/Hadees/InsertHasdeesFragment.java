@@ -1,24 +1,23 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Hadees;
 
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.res.AssetManager;
-import android.media.AudioRecord;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.alamat.besmellah.databinding.FragmentHadeesBinding;
+import com.alamat.besmellah.DbManager;
+import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.FragmentInsertHasdeesBinding;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,11 +56,11 @@ public class InsertHasdeesFragment extends Fragment {
         binding.btnInsertHadeesDeleteAllData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String res = new DbManager(getContext()).emptydb();
-                Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
 
-                HadeesFragment.hadeesModelList.clear();
-                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+                AlertDialog diaBox = ConfirmAllrecordsDeletion();
+                diaBox.show();
+
+
 //                HadeesFragment.hadeesAdapter.notifyItemRemoved(1);
 //                fragmentStatePagerItemAdapter = new FragmentStatePagerItemAdapter(
 //                        getChildFragmentManager(), FragmentPagerItems.with(getActivity())
@@ -89,10 +88,13 @@ public class InsertHasdeesFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                defualtinsertion();
+                AlertDialog diaBox = ConfirmDefaultInsertion();
+                diaBox.show();
+
+
 //                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
 //                HadeesFragment.hadeesAdapter.notifyItemRangeInserted(0, HadeesFragment.hadeesModelList.size());
-                HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+
 
             }
         });
@@ -171,7 +173,83 @@ public class InsertHasdeesFragment extends Fragment {
 
         return mLines;
     }
+    private AlertDialog ConfirmAllrecordsDeletion(){
+//
+//        LayoutInflater inflater = this.getLayoutInflater();
+//        View view = inflater.inflate(R.layout.dialog_view, null);
 
+        AlertDialog alert = new AlertDialog.Builder( new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom))
+                .setTitle("حذف جميع الاحاديث")
+                .setMessage("هل تريد حذف كل الاحاديث المسجلة لديك؟")
+//                .setIcon(R.drawable.delete)
+
+//                .setView(R.layout.dialog_view)
+//                .setView(view)
+                .setPositiveButton("حذف", new DatePickerDialog.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String res = new DbManager(getContext()).emptydb();
+                        Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
+
+                        HadeesFragment.hadeesModelList.clear();
+                        HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+
+                })
+
+                .setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+
+
+
+
+        return alert;
+
+
+    }
+
+    private AlertDialog ConfirmDefaultInsertion() {
+//
+//        LayoutInflater inflater = this.getLayoutInflater();
+//        View view = inflater.inflate(R.layout.dialog_view, null);
+
+        AlertDialog alert = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom))
+                .setTitle("استعادة احاديث التطبيق")
+                .setMessage("الضغط على استعادة، سوف يعيد الاحاديث الخمسين الاساسية في التطبيق ويحذف اي حديث قمت باضافته. هل تريد القيام بذلك؟")
+//                .setIcon(R.drawable.delete)
+
+//                .setView(R.layout.dialog_view)
+//                .setView(view)
+                .setPositiveButton("استعادة", new DatePickerDialog.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        defualtinsertion();
+                        HadeesFragment.hadeesAdapter.notifyDataSetChanged();
+                        dialog.dismiss();
+
+                    }
+
+                })
+
+                .setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+
+
+        return alert;
+    }
 //    @Override
 //    public void onPause() {
 //        super.onPause();

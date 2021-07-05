@@ -1,4 +1,4 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Quran;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 
+import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.ActivitySuraBinding;
 
 import java.io.BufferedReader;

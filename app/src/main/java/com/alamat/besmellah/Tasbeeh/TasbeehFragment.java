@@ -1,4 +1,4 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Tasbeeh;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.FragmentTasbeehBinding;
 
 import java.util.ArrayList;

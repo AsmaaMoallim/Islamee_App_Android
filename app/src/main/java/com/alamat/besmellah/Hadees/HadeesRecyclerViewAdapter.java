@@ -1,22 +1,21 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Hadees;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.HadeesItemBinding;
-import com.alamat.besmellah.databinding.QuranItemBinding;
 
 import java.util.List;
 
-public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecyclerViewAdapter.ViewHolder> {
+public class HadeesRecyclerViewAdapter extends RecyclerView.Adapter<HadeesRecyclerViewAdapter.ViewHolder> {
 
-    List<QuranModel> quranModels;
+    List<HadeesModel> hadeesModels;
     int itemView;
     OnItemClickListener onItemClickListener;
 
@@ -24,30 +23,28 @@ public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecycler
         this.onItemClickListener = onItemClickListener;
     }
 
-
-    public QuranRecyclerViewAdapter(List<QuranModel> quranModels) {
-        this.quranModels = quranModels;
+    public HadeesRecyclerViewAdapter(List<HadeesModel> hadeesModels) {
+        this.hadeesModels = hadeesModels;
         this.itemView = itemView;
     }
-
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        QuranItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.quran_item, parent, false);
+        HadeesItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.hadees_item, parent, false);
         return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        QuranModel quranModel = quranModels.get(position);
-        holder.quranItemBinding.tvQuranQuranText.setText(quranModel.quranText);
+        HadeesModel hadeesModel = hadeesModels.get(position);
+        holder.hadeesItemBinding.tvHadeesHadeesText.setText(hadeesModel.title);
 
-        if (onItemClickListener != null) {
+        if (onItemClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemClickListener.onItemClick(position, quranModel);
+                    onItemClickListener.onItemClick(position,hadeesModel);
                 }
             });
         }
@@ -55,27 +52,26 @@ public class QuranRecyclerViewAdapter extends RecyclerView.Adapter<QuranRecycler
 
     @Override
     public int getItemCount() {
-        if (quranModels == null) {
+        if (hadeesModels == null) {
             return 0;
         } else {
-            return quranModels.size();
+            return hadeesModels.size();
         }
     }
 
 
     ////////////////////////////////////////////////////////
     class ViewHolder extends RecyclerView.ViewHolder {
-        QuranItemBinding quranItemBinding;
+        HadeesItemBinding hadeesItemBinding;
 
-        public ViewHolder(QuranItemBinding quranItemBinding) {
-            super(quranItemBinding.getRoot());
-            this.quranItemBinding = quranItemBinding;
+        public ViewHolder(HadeesItemBinding hadeesItemBinding) {
+            super(hadeesItemBinding.getRoot());
+            this.hadeesItemBinding = hadeesItemBinding;
 
         }
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(int pos, QuranModel quranModel);
-
+    public interface OnItemClickListener{
+        void onItemClick(int pos , HadeesModel hadeesModel);
     }
 }

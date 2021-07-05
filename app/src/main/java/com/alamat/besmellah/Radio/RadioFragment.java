@@ -1,4 +1,4 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Radio;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.FragmentRadioBinding;
 import com.whygraphics.multilineradiogroup.MultiLineRadioGroup;
 
@@ -87,40 +88,34 @@ public class RadioFragment extends Fragment {
 
         switch (button.getId()) {
             case 1:
-                stream = "https://www.rmp-streaming.com/media/big-buck-bunny-360p.mp4";
+                stream = "http://livestreaming5.onlinehorizons.net/hls-live/Qurankareem/_definst_/liveevent/livestream.m3u8";
                 break;
             case 2:
-                stream = "http://quraan.us:9882/;*.mp3";
+                stream = "http://quraan.us:9888/;*.mp3";
                 break;
             case 3:
-                stream = "";
+                stream = "http://quraan.us:9930/;*.mp3";
                 break;
             case 4:
-                stream = "";
+                stream = "http://quraan.us:9936/;*.mp3";
                 break;
             case 5:
-                stream = "";
+                stream = "http://quraan.us:9960/;*.mp3";
                 break;
             case 6:
-                stream = "";
+                stream = "http://server2.quraan.us:9314/;*.mp3";
                 break;
             case 7:
-                stream = "";
+                stream = "http://quraan.us:9944/;*.mp3";
                 break;
             case 8:
-                stream = "";
+                stream = "http://server2.quraan.us:9990/;*.mp3";
                 break;
             case 9:
-                stream = "";
+                stream = "http://quraan.us:9850/;*.mp3";
                 break;
             case 10:
-                stream = "";
-                break;
-            case 11:
-                stream = "";
-                break;
-            case 12:
-                stream = "";
+                stream = "http://server2.quraan.us:9856/;*.mp3";
                 break;
         }
 
@@ -132,7 +127,6 @@ public class RadioFragment extends Fragment {
         @Override
         protected Boolean doInBackground(String... strings) {
             try {
-
                 mediaPlayer.setDataSource(strings[0]);
                 mediaPlayer.prepare();
                 prepared = true;

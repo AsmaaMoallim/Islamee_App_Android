@@ -3,16 +3,16 @@ package com.alamat.besmellah;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
+import com.alamat.besmellah.Hadees.MainHadeesFragment;
+import com.alamat.besmellah.Quran.QuranFragment;
+import com.alamat.besmellah.Radio.RadioFragment;
+import com.alamat.besmellah.Tasbeeh.TasbeehFragment;
 import com.alamat.besmellah.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity  {
 

@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="radio_buttons">
+    <string-array name="radio_buttons" >
 
-        <item>button_1</item>
-        <item>button_2</item>
-        <item>button_3</item>
-        <item>button_4</item>
-        <item>button_5</item>
-        <item>button_6</item>
-        <item>button_7</item>
-        <item>button_8</item>
-        <item>button_9</item>
-        <item>button_10</item>
-        <item>button_11</item>
-        <item>button_12</item>
+        <item>اذاعة القران/من القاهرة</item>
+        <item>إذاعة تفسير الإمام الشعراوي</item>
+        <item>إذاعة ترجمة القرآن بالصومالية</item>
+        <item>إذاعة ترجمة القرآن بالفارسية</item>
+        <item>إذاعة ترجمة القرآن بالإسبانية</item>
+        <item>إذاعة التجويد (غاية المريد في علم التجويد)</item>
+        <item>إذاعة تفسير الشيخ السعدي</item>
+        <item>إذاعة ترجمة القرآن بالإنجليزية</item>
+        <item>إذاعة الشيخ عبد الرحمن السديس برواية حفص</item>
+        <item>إذاعة الشيخ ماهر المعيقلي</item>
 
     </string-array>
 </resources>

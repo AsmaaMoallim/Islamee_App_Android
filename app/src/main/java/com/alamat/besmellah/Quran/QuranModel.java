@@ -1,4 +1,4 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Quran;
 
 public class QuranModel {
     String quranText;

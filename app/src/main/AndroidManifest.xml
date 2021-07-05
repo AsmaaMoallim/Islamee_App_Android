@@ -12,8 +12,8 @@
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Besmellah">
-        <activity android:name=".HadessContentActivity"></activity>
-        <activity android:name=".SuraActivity" />
+        <activity android:name=".Hadees.HadessContentActivity"></activity>
+        <activity android:name=".Quran.SuraActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>

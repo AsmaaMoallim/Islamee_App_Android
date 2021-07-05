@@ -1,4 +1,4 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Hadees;
 
 import android.os.Bundle;
 
@@ -10,11 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.FragmentMainHadeesBinding;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
 
 public class MainHadeesFragment extends Fragment {
