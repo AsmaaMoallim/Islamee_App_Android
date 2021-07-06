@@ -18,12 +18,71 @@
             android:id="@+id/rv_hadees_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layoutDirection="rtl"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layoutDirection="rtl"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
+        <ImageButton
+            android:id="@+id/imgbtn_hadees_backup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_custom_style"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            android:src="@drawable/ic_baseline_arrow_upward_24"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_hadees_getdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_custom_style"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            android:src="@drawable/ic_baseline_arrow_downward_24"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/tv_hadees_getdown"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@drawable/btn_custom_style"-->
+        <!--            android:drawableStart="@drawable/ic_baseline_arrow_downward_24"-->
+        <!--            android:paddingHorizontal="6dp"-->
+        <!--            android:text="اسفل"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="13sp"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/tv_hadees_backup"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@drawable/btn_custom_style"-->
+        <!--            android:drawableStart="@drawable/ic_baseline_arrow_upward_24"-->
+        <!--            android:paddingHorizontal="6dp"-->
+        <!--            android:text="اعلى"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="13sp"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
