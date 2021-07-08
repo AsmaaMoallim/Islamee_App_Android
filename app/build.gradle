@@ -55,5 +55,12 @@ dependencies {
 
     implementation 'com.github.Gavras:MultiLineRadioGroup:v1.0.0.6'
 
+
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+
 }
 

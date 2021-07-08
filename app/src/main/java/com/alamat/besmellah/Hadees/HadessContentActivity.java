@@ -7,18 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.alamat.besmellah.DbManager;
 import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.ActivityHadessContentBinding;
 
@@ -112,6 +108,9 @@ public class HadessContentActivity extends AppCompatActivity {
 //        dialog.setContentView(R.layout.dialog_view); // your custom view.
 //        dialog.setCancelable(false);
 //        dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//
+//        dialog.setTitle("hi");
+//
 //
 //
 //        dialog.show();

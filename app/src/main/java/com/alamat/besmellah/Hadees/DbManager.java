@@ -1,4 +1,4 @@
-package com.alamat.besmellah;
+package com.alamat.besmellah.Hadees;
 
 import android.content.ContentValues;
 import android.content.Context;

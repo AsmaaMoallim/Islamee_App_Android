@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alamat.besmellah">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/app_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Besmellah">
-        <activity android:name=".Hadees.HadessContentActivity"></activity>
+        android:theme="@style/Theme.Besmellah"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Hadees.HadessContentActivity" />
         <activity android:name=".Quran.SuraActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity">

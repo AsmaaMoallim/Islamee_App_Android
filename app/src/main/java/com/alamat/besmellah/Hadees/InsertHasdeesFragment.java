@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.alamat.besmellah.DbManager;
 import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.FragmentInsertHasdeesBinding;
 
@@ -140,13 +139,10 @@ public class InsertHasdeesFragment extends Fragment {
 
     public List<String> readLine(String path) {
         List<String> mLines = new ArrayList<>();
-
         AssetManager am = getActivity().getAssets();
-
         try {
             InputStream is = am.open(path);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
 //            do {
 //                if (line != "#"){
 //                    line += reader.readLine();
@@ -156,7 +152,6 @@ public class InsertHasdeesFragment extends Fragment {
 //                    mLines.add(line);
 //                }
 //            } while ((line = reader.readLine()) != null);
-
             String text = "";
             while (reader.ready()) {
                 String line = reader.readLine();
