@@ -6,12 +6,14 @@ import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +21,15 @@ import android.view.ViewGroup;
 import com.alamat.besmellah.R;
 import com.alamat.besmellah.databinding.FragmentHadeesBinding;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class HadeesFragment extends Fragment {
 
-    private FragmentHadeesBinding binding;
+    static FragmentHadeesBinding binding;
     View view;
 
     static HadeesRecyclerViewAdapter hadeesAdapter;
@@ -45,9 +49,15 @@ public class HadeesFragment extends Fragment {
         binding.rvHadeesRecyclerView.setLayoutManager(layoutManager);
 
 
-//        if (hadeesModelList.size() != 0){
-//
+        if (hadeesAdapter.getItemCount() == 0){
+            binding.imgbtnHadeesGetdown.setVisibility(View.GONE);
+            binding.imgbtnHadeesBackup.setVisibility(View.GONE);
+            Log.e("TAG", "getItemCount = 0: ");
+
+        }
+        else {
             binding.imgbtnHadeesGetdown.setVisibility(View.VISIBLE);
+        }
 
             binding.imgbtnHadeesGetdown.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,55 +73,60 @@ public class HadeesFragment extends Fragment {
                 @Override
                 public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                     super.onScrollStateChanged(recyclerView, newState);
+                    if (hadeesAdapter.getItemCount() == 0){
+                        binding.imgbtnHadeesGetdown.setVisibility(View.GONE);
+                        binding.imgbtnHadeesBackup.setVisibility(View.GONE);}
+                    else{
+                        LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
 
-                    LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                        int firstVisibleItemPosition = manager.findFirstVisibleItemPosition();
 
-                    int firstVisibleItemPosition = manager.findFirstVisibleItemPosition();
+                        // Judge not to slide
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                            // Determine whether to scroll more than one screen
+                            if (firstVisibleItemPosition == 0) {// No more than one screen
+                                // Hide here is for display after sliding, after manually sliding to the home page, it is hidden
+                                binding.imgbtnHadeesBackup.setVisibility(View.GONE);
 
-                    // Judge not to slide
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        // Determine whether to scroll more than one screen
-                        if (firstVisibleItemPosition == 0) {// No more than one screen
-                            // Hide here is for display after sliding, after manually sliding to the home page, it is hidden
-                            binding.imgbtnHadeesBackup.setVisibility(View.GONE);
-
-                        } else {
-                            binding.imgbtnHadeesBackup.setVisibility(View.VISIBLE);
-                            binding.imgbtnHadeesBackup.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    recyclerView.smoothScrollToPosition(0);
+                            } else {
+                                binding.imgbtnHadeesBackup.setVisibility(View.VISIBLE);
+                                binding.imgbtnHadeesBackup.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        recyclerView.smoothScrollToPosition(0);
 //                                recyclerView.scrollToPosition(0);
-                                    binding.imgbtnHadeesBackup.setVisibility(View.GONE);
-                                }
-                            });
-                        }
-                    }
-
-
-                    int findLastVisibleItemPosition = manager.findLastVisibleItemPosition();
-
-                    // Judge not to slide
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        // Determine whether to scroll more than one screen
-                        if (findLastVisibleItemPosition == HadeesFragment.hadeesModelList.size() - 1) {// No more than one screen
-                            // Hide here is for display after sliding, after manually sliding to the home page, it is hidden
-                            binding.imgbtnHadeesGetdown.setVisibility(View.GONE);
-
-                        } else {
-                            binding.imgbtnHadeesGetdown.setVisibility(View.VISIBLE);
-                            binding.imgbtnHadeesGetdown.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    recyclerView.smoothScrollToPosition(HadeesFragment.hadeesModelList.size());
-//                                recyclerView.scrollToPosition(0);
-                                    binding.imgbtnHadeesGetdown.setVisibility(View.GONE);
-                                }
-                            });
+                                        binding.imgbtnHadeesBackup.setVisibility(View.GONE);
+                                    }
+                                });
+                            }
                         }
 
 
+                        int findLastVisibleItemPosition = manager.findLastVisibleItemPosition();
+
+                        // Judge not to slide
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                            // Determine whether to scroll more than one screen
+                            if (findLastVisibleItemPosition == HadeesFragment.hadeesModelList.size() - 1) {// No more than one screen
+                                // Hide here is for display after sliding, after manually sliding to the home page, it is hidden
+                                binding.imgbtnHadeesGetdown.setVisibility(View.GONE);
+
+                            } else {
+                                binding.imgbtnHadeesGetdown.setVisibility(View.VISIBLE);
+                                binding.imgbtnHadeesGetdown.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        recyclerView.smoothScrollToPosition(HadeesFragment.hadeesModelList.size());
+//                                recyclerView.scrollToPosition(0);
+                                        binding.imgbtnHadeesGetdown.setVisibility(View.GONE);
+                                    }
+                                });
+                            }
+
+
+                        }
                     }
+
                 }
             });
 
@@ -160,23 +175,5 @@ public class HadeesFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-//        super.onViewStateRestored(savedInstanceState);
-//        hadeesAdapter.notifyDataSetChanged();
-//
-//    }
-//        @Override
-//    public void onStart() {
-//        super.onStart();
-//        hadeesAdapter.notifyDataSetChanged();
-//
-//    }
-//
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//
-//    }
 }

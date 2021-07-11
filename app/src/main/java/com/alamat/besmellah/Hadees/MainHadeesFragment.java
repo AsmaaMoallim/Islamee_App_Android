@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,13 @@ public class MainHadeesFragment extends Fragment {
             public void onPageSelected(int position) {
                 binding.viewpager.getAdapter().notifyDataSetChanged();
                 HadeesFragment.hadeesAdapter.notifyDataSetChanged();
-
+                if (HadeesFragment.hadeesAdapter.getItemCount() == 0){
+                    HadeesFragment.binding.imgbtnHadeesGetdown.setVisibility(View.GONE);
+                    HadeesFragment.binding.imgbtnHadeesBackup.setVisibility(View.GONE);
+                }
+                else {
+                    HadeesFragment.binding.imgbtnHadeesGetdown.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -67,13 +74,12 @@ public class MainHadeesFragment extends Fragment {
 
             }
 
+
+
         });
+
+
     }
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        initTabLayout();
-//
-//    }
+
 }

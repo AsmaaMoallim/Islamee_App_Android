@@ -46,7 +46,6 @@ public class RadioFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_radio, container, false);
 
         binding.btnRadioPlayOrStop.setEnabled(false);
-        binding.btnRadioPlayOrStop.setText("جاري التحميل....");
 
         callRadios();
         mediaPlayer = new MediaPlayer();
@@ -70,6 +69,7 @@ public class RadioFragment extends Fragment {
         binding.mainActivityMultiLineRadioGroup.setOnCheckedChangeListener(new MultiLineRadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(ViewGroup group, RadioButton button) {
+                binding.btnRadioPlayOrStop.setText("جاري التحميل....");
                 stream = getStreamUrl(button);
                 Toast.makeText(getActivity(), button.getText() + " was clicked",
                         Toast.LENGTH_SHORT).show();

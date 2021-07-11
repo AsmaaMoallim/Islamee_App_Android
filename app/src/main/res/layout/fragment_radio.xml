@@ -56,6 +56,7 @@
                     android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:textDirection="rtl"
                     app:max_in_row="1"
+                    android:maxLines="2"
                     style="@style/BottomNavigation"
                     app:radio_buttons="@array/radio_buttons"
                      />
@@ -73,7 +74,7 @@
             android:layout_marginTop="40dp"
             android:background="@drawable/btn_custom_style"
             android:paddingHorizontal="60dp"
-            android:text="تشغيل"
+            android:text="اختر اذاعة..."
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
