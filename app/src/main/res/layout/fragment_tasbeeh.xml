@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:background="@drawable/btn_custom_style"
-            android:text="آبدآ الجميع من جديد"
+            android:text="صفر الجميع"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

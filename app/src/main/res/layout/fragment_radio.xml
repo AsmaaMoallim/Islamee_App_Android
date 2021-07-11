@@ -45,7 +45,9 @@
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:maxLines="2"
+                >
 
 
                 <com.whygraphics.multilineradiogroup.MultiLineRadioGroup xmlns:multi_line_radio_group="http://schemas.android.com/apk/res-auto"

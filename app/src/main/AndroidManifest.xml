@@ -15,7 +15,9 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Hadees.HadessContentActivity" />
         <activity android:name=".Quran.SuraActivity" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
